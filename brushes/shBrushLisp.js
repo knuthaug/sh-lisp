@@ -5,12 +5,12 @@ SyntaxHighlighter.brushes.Lisp = function(){
     var operators = '> < = * / %';
 
     this.regexList = [
-                      //{ regex: SyntaxHighlighter.regexLib.doubleQuotedString,		css: 'string' },
-                //{ regex: new RegExp('&\\w+;', 'g'),			css: 'plain' },
+                      { regex: SyntaxHighlighter.regexLib.doubleQuotedString,		css: 'string' },
+                { regex: new RegExp('&\\w+;', 'g'),			css: 'plain' },
                 { regex: new RegExp(';.*', 'g'),			css: 'comments' },
-                //{ regex: new RegExp("'(\\w|-)+", 'g'),			css: 'variable' },
-                //{ regex: new RegExp(this.getKeywords(keywords), 'gm'),	css: 'keyword' },
-                //{ regex: new RegExp(this.getKeywords(funcs), 'gm'),	css: 'functions' },
+                { regex: new RegExp("'(\\w|-)+", 'g'),			css: 'variable' },
+                { regex: new RegExp(this.getKeywords(keywords), 'gm'),	css: 'keyword' },
+                { regex: new RegExp(this.getKeywords(funcs), 'gm'),	css: 'functions' },
              ];
     
 }
