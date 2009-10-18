@@ -6,7 +6,7 @@ test("Object prototype", function() {
 
         equals( typeof brush.processMatches, 'function', "Lisp brush prototype is Highlighter" );
         equals( SyntaxHighlighter.brushes.Lisp.aliases[0], 'lisp', "Has 'lisp' as alias" );        
-        equals( brush.regexList.length , 1, "one regexp defined" );        
+equals( brush.regexList.length , 7, "six regexp defined" );        
         
     });
 
@@ -19,12 +19,19 @@ test("SyntaxHighlighter regression", function() {
     });
 
 test("Match comment", function() {
-        expect(2);
+        expect(4);
         var brush = new SyntaxHighlighter.brushes.Lisp();
-        var test = ";this is a comment";
-        var list = brush.findMatches(brush.regexList, test); 
-        equals( list[0].css, "comments", "regexp for comment matches");
-        equals( list[0].length, test.length, "regexp for comment matches string length");
+        var list = brush.findMatches(brush.regexList, ";this is a comment"); 
+        equals( list[0].css, "comments", "regexp for comment at start of string");
+
+        list = brush.findMatches(brush.regexList, "(foo) ;this is a comment"); 
+        equals( list[0].css, "comments", "comment at end of string");
+
+        list = brush.findMatches(brush.regexList, " ;this is a comment"); 
+        equals( list[0].css, "comments", "space+comment");
+
+        list = brush.findMatches(brush.regexList, " ;;;this is a comment"); 
+        equals( list[0].css, "comments", "multiple comment markers");
         
     });
 
